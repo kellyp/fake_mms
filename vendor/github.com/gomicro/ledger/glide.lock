@@ -1,0 +1,21 @@
+hash: 30aad1198e8224a1dfc975c59c8f9825c9a7aae4373a6858cf5d5fc2f5d84b3f
+updated: 2017-09-04T10:39:35.464959092-05:00
+imports: []
+testImports:
+- name: github.com/franela/goblin
+  version: b962efd4bb2a58a949a16d3fdcd6ffa068d21b03
+- name: github.com/gomicro/penname
+  version: c640305eb19d651fe8516aadbcf9bd3e50a5a152
+- name: github.com/onsi/gomega
+  version: a78ae492d53aad5a7a232d0d0462c14c400e3ee7
+  subpackages:
+  - format
+  - internal/assertion
+  - internal/asyncassertion
+  - internal/testingtsupport
+  - matchers
+  - matchers/support/goraph/bipartitegraph
+  - matchers/support/goraph/edge
+  - matchers/support/goraph/node
+  - matchers/support/goraph/util
+  - types

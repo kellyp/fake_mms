@@ -1,0 +1,11 @@
+language: go
+go:
+  - 1.6
+  - tip
+before_script:
+  - curl -s -L -I https://gocover.io/_/github.com/gomicro/ledger
+script:
+  - go test -v $(go list ./... | grep -v /vendor/)
+notifications:
+  slack:
+    secure: e+/NxSLu0xVjn31x7QMVbrxixgg/YSJ7yo4D01dBnsZeTQUFie3lq3yMe7q3Z2HEVLz0TSfNht/1eGciYzxnRXO4pyRbaOhvcsCjx14LDaMwtCPkTjdiR8ppEcHDKPaQ6LfP8PyGFYDmdg6uNerbhXxKg0cYKwzoAXASDYOefX3aNQZvgsuoZJGckvmnxN6yRAWMXiYKOKwx2n8WVMy+TBuv8eoA4kuZA+aav5VkQwnxnNJJacnVa8suc3sDoBcMp7hdPoXwOyIducSbLGOdEL+Zq445upXoe7ZjwSph6ZuXQUpibkLLxlo8heSgxwcUQRz4T5qLRGM5GeNmYH6XrjI6hAiDbKklDJeKWFK9TXOTejj2C8P0Hk8cI9vNE8BaBnKZiE+uZ+1MgU5bXaP7CLeOaK0ARj08KWhoC+qVkmoSnpaB2CGDnPPjX+Y7abxiN3TfEdUgo8R525OKTsSEYPIHaKBGEbTdLu0GUODCO2UPxFFA+kLNfbMeHERbzrfaQdgoeQv+nNcN91s2FDUnWwVRwmMi5y+m1X5TK0bp6+hvGtqjnBko6aLcustcLnxgMa8zNGzVmff/NIfwEcs8CccQsd21hodvLZXtwAbdgHLge9FxX1mSApOHX2p8wHhrzBMoqS6veENNRGPQcS19AEeuLMw07sR8vYDTRX4TKqE=

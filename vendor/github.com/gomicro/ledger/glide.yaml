@@ -1,0 +1,9 @@
+package: github.com/gomicro/ledger
+import: []
+testImport:
+- package: github.com/franela/goblin
+  version: b962efd4bb2a58a949a16d3fdcd6ffa068d21b03
+- package: github.com/gomicro/penname
+  version: v0.0.1
+- package: github.com/onsi/gomega
+  version: v1.0
