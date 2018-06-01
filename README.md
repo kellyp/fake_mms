@@ -1,4 +1,4 @@
-# fake_mms
+# Fake MMS
 
 Fake MMS is an ultra lightweight mocking server for the AWS [Marketplace Metering
 Service](https://docs.aws.amazon.com/marketplacemetering/latest/APIReference/Welcome.html).
