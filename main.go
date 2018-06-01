@@ -11,6 +11,8 @@ import (
 	"github.com/gomicro/ledger"
 	"github.com/gorilla/mux"
 	"github.com/kelseyhightower/envconfig"
+
+	_ "github.com/gomicro/steward"
 )
 
 type configuration struct {
@@ -83,7 +85,6 @@ func configure() {
 		ledger.Errorf("Failed to process from the environment: %v", err.Error())
 		os.Exit(1)
 	}
-
 	log.Debugf("Configured with (%v) for valid tokens", config.RegistrationTokens)
 }
 
