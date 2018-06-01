@@ -15,8 +15,8 @@ import (
 
 type configuration struct {
 	RegistrationTokens string `envconfig:"REGISTRATION_TOKENS" default:"validtoken"`
-	Hostname           string `envconfig:"HOSTNAME" default:"0.0.0.0"`
-	Port               string `envconfig:"HOSTNAME" default:"8080"`
+	Hostname           string `envconfig:"HOST" default:"0.0.0.0"`
+	Port               string `envconfig:"PORT" default:"8080"`
 
 	//Fake response data
 	CustomerID  string `envconfig:"CUSTOMER_ID" default:"somecustomer"`
