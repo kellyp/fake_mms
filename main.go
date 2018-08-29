@@ -3,12 +3,15 @@ package main
 import (
 	"encoding/json"
 	"io/ioutil"
+	"math/rand"
 	"net"
 	"net/http"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/gomicro/ledger"
+	"github.com/google/uuid"
 	"github.com/gorilla/mux"
 	"github.com/kelseyhightower/envconfig"
 
@@ -39,33 +42,27 @@ type marketplacemeteringResolveCustomerOutput struct {
 	ProductCode        string `json:"ProductCode"`
 }
 
+type UsageRecord struct {
+	CustomerIdentifier string `json:"CustomerIdentifier"`
+	Dimension          string `json:"Dimension"`
+	Quantity           string `json:"Quantity"`
+	Timestamp          string `json:"Timestamp"`
+}
+
 type marketplacemeteringBatchMeterUsageInput struct {
-	ProductCode  string `json:"ProductCode"`
-	UsageRecords []struct {
-		CustomerIdentifier string `json:"CustomerIdentifier"`
-		Dimension          string `json:"Dimension"`
-		Quantity           string `json:"Quantity"`
-		Timestamp          string `json:"Timestamp"`
-	} `json:"UsageRecords"`
+	ProductCode  string        `json:"ProductCode"`
+	UsageRecords []UsageRecord `json:"UsageRecords"`
+}
+
+type UsageRecordResult struct {
+	MeteringRecordID string      `json:"MeteringRecordId"`
+	Status           string      `json:"Status"`
+	UsageRecord      UsageRecord `json:"UsageRecord"`
 }
 
 type marketplacemeteringBatchMeterUsageOutput struct {
-	Results []struct {
-		MeteringRecordID string `json:"MeteringRecordId"`
-		Status           string `json:"Status"`
-		UsageRecord      struct {
-			CustomerIdentifier string `json:"CustomerIdentifier"`
-			Dimension          string `json:"Dimension"`
-			Quantity           string `json:"Quantity"`
-			Timestamp          string `json:"Timestamp"`
-		} `json:"UsageRecord"`
-	} `json:"Results"`
-	UnprocessedRecords []struct {
-		CustomerIdentifier string `json:"CustomerIdentifier"`
-		Dimension          string `json:"Dimension"`
-		Quantity           string `json:"Quantity"`
-		Timestamp          string `json:"Timestamp"`
-	} `json:"UnprocessedRecords"`
+	Results            []UsageRecordResult `json:"Results"`
+	UnprocessedRecords []UsageRecord       `json:"UnprocessedRecords"`
 }
 
 func main() {
@@ -108,7 +105,22 @@ func handleBatchMeterUsage(w http.ResponseWriter, r *http.Request) {
 
 	log.Debugf("Received a BatchMeterUsage request %v", i.ProductCode)
 
+	rand.Seed(time.Now().UnixNano())
 	o := marketplacemeteringBatchMeterUsageOutput{}
+	for idx := range i.UsageRecords {
+		r := i.UsageRecords[idx]
+		switch rand.Intn(2) {
+		case 0:
+			o.UnprocessedRecords = append(o.UnprocessedRecords, r)
+		case 1:
+			rando, _ := uuid.NewRandom()
+			o.Results = append(o.Results, UsageRecordResult{
+				UsageRecord:      r,
+				Status:           "Success",
+				MeteringRecordID: rando.String(),
+			})
+		}
+	}
 
 	b, err = json.Marshal(o)
 	if err != nil {

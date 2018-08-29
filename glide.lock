@@ -1,10 +1,12 @@
-hash: a38f3314189df62da8a3d85028df5a46f7444fa59d6bf59f68f494ced9c8c541
-updated: 2018-06-01T15:21:59.10946-07:00
+hash: bdffea34ec313ef428e87a2c12345958c2bd5c31bacb299deaa5417af69c11cb
+updated: 2018-08-29T16:25:22.05055-07:00
 imports:
 - name: github.com/gomicro/ledger
   version: 10eb2e4acf2066492b9af0f7c966d1e1a0894256
 - name: github.com/gomicro/steward
   version: 7a0e1773597526ba3f32e02dc1fa8df7c5e70fac
+- name: github.com/google/uuid
+  version: e704694aed0ea004bb7eb1fc2e911d048a54606a
 - name: github.com/gorilla/context
   version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
 - name: github.com/gorilla/mux
