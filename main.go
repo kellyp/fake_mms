@@ -45,8 +45,8 @@ type marketplacemeteringResolveCustomerOutput struct {
 type UsageRecord struct {
 	CustomerIdentifier string `json:"CustomerIdentifier"`
 	Dimension          string `json:"Dimension"`
-	Quantity           string `json:"Quantity"`
-	Timestamp          string `json:"Timestamp"`
+	Quantity           int    `json:"Quantity"`
+	Timestamp          int    `json:"Timestamp"`
 }
 
 type marketplacemeteringBatchMeterUsageInput struct {
