@@ -7,7 +7,7 @@ Service](https://docs.aws.amazon.com/marketplacemetering/latest/APIReference/Wel
 ## Installation
 
 ```
-go install github.com/kellyp/fake_mms
+go install github.com/ion-channel/fake_mms
 ```
 
 ## Running
@@ -19,8 +19,8 @@ fake_sqs
 ## Development
 
 ```
-go get github.com/kellyp/fake_mms
-cd $GOPATH/src/github.com/kellyp/fake_mms
+go get github.com/ion-channel/fake_mms
+cd $GOPATH/src/github.com/ion-channel/fake_mms
 go build
 ```
 
@@ -29,7 +29,7 @@ go build
 ### Build
 
 ```
-cd $GOPATH/src/github.com/kellyp/fake_mms
+cd $GOPATH/src/github.com/ion-channel/fake_mms
 docker build -t your/tag_name .
 ```
 
@@ -38,7 +38,7 @@ Build the fake mms docker image and tag it appropriately
 ### Running
 
 ```
-docker run -it -p 8080:8080 kellyp/fake_mms
+docker run -it -p 8080:8080 ion-channel/fake_mms
 ```
 
 bind to the host port 8080 and run a docker container
